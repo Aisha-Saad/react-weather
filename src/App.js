@@ -18,17 +18,18 @@ function App() {
         <Container
           maxWidth="sm"
           dir="rtl"
-          style={{
-            // display: "flex",
-            // justifyContent: "center",
-            // alignItems: "center",
-          
-          }}
+          style={
+            {
+              // display: "flex",
+              // justifyContent: "center",
+              // alignItems: "center",
+            }
+          }
         >
           <div
             style={{
               height: "100vh",
-              width:"100%",
+              width: "100%",
               display: "flex",
               justifyContent: "center",
               alignItems: "center",
@@ -41,13 +42,11 @@ function App() {
                 padding: "10px",
                 boxShadow: " 0px 10px 1px rgba(0,0,0,0.05) ",
                 borderRadius: "9px",
-                display: "flex",
                 width: "100%",
-                justifyContent:"space-evenly",
               }}
             >
-              <div  >
-                <div style={{ padding: "10px"}}>
+              <div>
+                <div style={{ padding: "10px" }}>
                   <Typography variant="h1">الرياض</Typography>
                 </div>
 
@@ -56,31 +55,24 @@ function App() {
                 </div>
                 <hr />
                 <div
-                style={{ display: "flex" ,justifyContent:"space-around"}}  
-
+                  style={{ display: "flex", justifyContent: "space-around" }}
                 >
-                  <div style={{display:"flex", justifyContent:"space-around"}}>
+                  <div
+                    
+                  >
                     {" "}
                     <Typography variant="h2" style={{ textAlign: "right" }}>
                       38
+                      <Typography variant="h6">broken clouds</Typography>
+                      
                     </Typography>
-   
                     {/* {TODO img tempretcher} */}
-
-                    <Typography variant="h6" >broken clouds</Typography>
-
-                    <div style={{ direction: "ltr", textAlign: "right"  }}>
-
+                    <div style={{ direction: "ltr", textAlign: "right" }}>
                       <h5>34:الصغرى</h5>
                       <h5>34:الكبرى</h5>
                     </div>
                   </div>
-                  
-                  <div>
-                    {" "}
-                    
-                  
-                  </div>
+
                   <CloudIcon style={{ fontSize: "200px", color: "#80ced7" }} />
                 </div>
               </div>
