@@ -28,6 +28,10 @@
   color: #61dafb;
 }
 
+body{
+  background: #174776;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
@@ -35,4 +39,25 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+
+@font-face {
+  font-family: IBM;
+  src: url("/public/Fonts/IBMPlexSansArabic-Regular.ttf");
+  font-weight: 500;
+}
+
+
+
+@font-face {
+  font-family: IBM;
+  src: url("/public/Fonts/IBMPlexSansArabic-Light.ttf");
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: IBM;
+  src: url("/public/Fonts/IBMPlexSansArabic-Bold.ttf");
+  font-weight:600;
 }

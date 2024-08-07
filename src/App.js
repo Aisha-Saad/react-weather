@@ -1,23 +1,95 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
+import Container from "@mui/material/Container";
+import Typography from "@mui/material/Typography";
+import CloudIcon from "@mui/icons-material/Cloud";
+
+const theme = createTheme({
+  typography: {
+    fontFamily: ["IBM"],
+  },
+});
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+      <ThemeProvider theme={theme}>
+        {/*=== {container}===== */}
+        <Container
+          maxWidth="sm"
+          dir="rtl"
+          style={{
+            // display: "flex",
+            // justifyContent: "center",
+            // alignItems: "center",
+          
+          }}
         >
-          Learn React
-        </a>
-      </header>
+          <div
+            style={{
+              height: "100vh",
+              width:"100%",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            {/* {CARD} */}
+            <div
+              style={{
+                background: "#f1faee",
+                padding: "10px",
+                boxShadow: " 0px 10px 1px rgba(0,0,0,0.05) ",
+                borderRadius: "9px",
+                display: "flex",
+                width: "100%",
+                justifyContent:"space-evenly",
+              }}
+            >
+              <div  >
+                <div style={{ padding: "10px"}}>
+                  <Typography variant="h1">الرياض</Typography>
+                </div>
+
+                <div style={{ padding: "10px" }}>
+                  <Typography variant="h5">الأحد 2024/08/5 </Typography>
+                </div>
+                <hr />
+                <div
+                style={{ display: "flex" ,justifyContent:"space-around"}}  
+
+                >
+                  <div style={{display:"flex", justifyContent:"space-around"}}>
+                    {" "}
+                    <Typography variant="h2" style={{ textAlign: "right" }}>
+                      38
+                    </Typography>
+   
+                    {/* {TODO img tempretcher} */}
+
+                    <Typography variant="h6" >broken clouds</Typography>
+
+                    <div style={{ direction: "ltr", textAlign: "right"  }}>
+
+                      <h5>34:الصغرى</h5>
+                      <h5>34:الكبرى</h5>
+                    </div>
+                  </div>
+                  
+                  <div>
+                    {" "}
+                    
+                  
+                  </div>
+                  <CloudIcon style={{ fontSize: "200px", color: "#80ced7" }} />
+                </div>
+              </div>
+            </div>
+          </div>
+        </Container>
+
+        {/*=== {container}===== */}
+      </ThemeProvider>
     </div>
   );
 }
