@@ -7,6 +7,9 @@ import Button from "@mui/material/Button";
 
 import { useState, useEffect } from "react";
 import axios from "axios";
+import moment from "moment";
+import "moment/min/locales"
+moment.locale("ar");         // ar
 
 const theme = createTheme({
   typography: {
@@ -14,14 +17,17 @@ const theme = createTheme({
   },
 });
 function App() {
+  const [timeandDate, settimeandDate] = useState("");
   const [temp, setTemp] = useState({
     number: null,
     description: "",
     min: null,
     max: null,
-    icon:`https://openweathermap.org/img/wn/${tempIcon}@2x.png`,
+    icon:null,
   });
+  
   useEffect(() => {
+    settimeandDate(moment().format('MMMM Do YYYY,   h:mm '))
     axios
       .get(
         "https://api.openweathermap.org/data/2.5/weather?lat=24.7&lon=46.6&appid=b5fe871dfe12d53f4a9ced570be2eb3b"
@@ -35,7 +41,7 @@ function App() {
         const max = Math.round(response.data.main.temp_max - 272.15);
         const tempIcon = response.data.weather[0].icon;
         console.log(response.data.weather);
-        setTemp({ number: responsTemp, description:description, max:max, min:min ,icon:tempIcon});
+        setTemp({ number: responsTemp, description:description, max:max, min:min ,icon:`https://openweathermap.org/img/wn/${tempIcon}@2x.png`});
       })
     
       .catch(function (error) {
@@ -84,7 +90,7 @@ function App() {
                 </div>
 
                 <div style={{ padding: "10px" }}>
-                  <Typography variant="h5">الأحد 2024/08/5 </Typography>
+                  <Typography variant="h5"> {timeandDate}</Typography>
                 </div>
                 <hr />
                 <div
