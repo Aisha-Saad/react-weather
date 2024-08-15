@@ -9,6 +9,9 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import moment from "moment";
 import "moment/min/locales"
+
+import { useTranslation } from 'react-i18next';
+
 moment.locale("ar");         // ar
 
 const theme = createTheme({
@@ -17,6 +20,7 @@ const theme = createTheme({
   },
 });
 function App() {
+  const { t, i18n } = useTranslation();
   const [timeandDate, settimeandDate] = useState("");
   const [temp, setTemp] = useState({
     number: null,
@@ -27,6 +31,8 @@ function App() {
   });
   
   useEffect(() => {
+    i18n.changeLanguage("ar")
+
     settimeandDate(moment().format('MMMM Do YYYY,   h:mm '))
     axios
       .get(
@@ -87,6 +93,7 @@ function App() {
               <div>
                 <div style={{ padding: "10px" }}>
                   <Typography variant="h1">الرياض</Typography>
+                  <h1>{t("Welcome to React")}</h1>
                 </div>
 
                 <div style={{ padding: "10px" }}>
