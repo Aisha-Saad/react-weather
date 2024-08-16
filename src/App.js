@@ -21,6 +21,7 @@ const theme = createTheme({
 });
 function App() {
   const { t, i18n } = useTranslation();
+  const [local, setLocal] = useState("");
   const [timeandDate, settimeandDate] = useState("");
   const [temp, setTemp] = useState({
     number: null,
@@ -29,6 +30,19 @@ function App() {
     max: null,
     icon:null,
   });
+
+
+  function handelChangeLanguage(){
+  
+    if(local==="en"){
+      setLocal("ar")
+      i18n.changeLanguage("ar")
+    }else{
+      setLocal("en")
+      i18n.changeLanguage("en")
+    }
+
+  }
   
   useEffect(() => {
     i18n.changeLanguage("ar")
@@ -36,7 +50,7 @@ function App() {
     settimeandDate(moment().format('MMMM Do YYYY,   h:mm '))
     axios
       .get(
-        "https://api.openweathermap.org/data/2.5/weather?lat=24.7&lon=46.6&appid=b5fe871dfe12d53f4a9ced570be2eb3b"
+        "https://api.openweathermap.org/data/2.5/weather?lat=24.6&lon=46.7&appid=b5fe871dfe12d53f4a9ced570be2eb3b"
       )
 
       .then(function (response) {
@@ -92,8 +106,8 @@ function App() {
             >
               <div>
                 <div style={{ padding: "10px" }}>
-                  <Typography variant="h1">الرياض</Typography>
-                  <h1>{t("Welcome to React")}</h1>
+                  <Typography variant="h1">{t("Riyad")}</Typography>
+                  
                 </div>
 
                 <div style={{ padding: "10px" }}>
@@ -107,7 +121,7 @@ function App() {
                     {" "}
                     <Typography variant="h2" style={{ textAlign: "right" }}>
                       {temp.number}
-                      <Typography variant="h6">{temp.description}</Typography>
+                      <Typography variant="h6">{t(temp.description)}</Typography>
                     </Typography>
                       <img src={temp.icon}/>
                     <div
@@ -118,9 +132,9 @@ function App() {
                         justifyContent: "space-between",
                       }}
                     >
-                      <h5> {temp.min} :الصغرى</h5>
+                      <h5> {temp.min}: {t("min")} </h5>
                       <h5 style={{ padding: "0 9px " }}>|</h5>
-                      <h5> {temp.max} :الكبرى</h5>
+                      <h5> {temp.max} : {t("max")}</h5>
                     </div>
                   </div>
 
@@ -129,8 +143,8 @@ function App() {
               </div>
             </div>
             <div>
-              <Button variant="text" style={{ color: "white" }}>
-                انجليزي
+              <Button variant="text" style={{ color: "white" }} onClick={handelChangeLanguage}>
+              {local==="en" ?"Arabic"  : "انجليزي"}
               </Button>
             </div>
           </div>

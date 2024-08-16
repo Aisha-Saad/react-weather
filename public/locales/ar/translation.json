@@ -1,3 +1,15 @@
 {
-  "Welcome to React":"أهلا بكم الى رياكت"
+  "Riyad":"   الرياض",
+  "min": "الصغرى",
+  "max":"الكبرى",
+  "clear sky":"سماء صافية",
+  "few clouds":"سحب قليلة",
+  "scattered clouds":"غيوم متفرقة",
+  "broken clouds":" غائم جزئيا",
+  "shower rain":"زخات المطر",
+  "rain":"ممطر",
+  "thunderstorm":"عاصفة رعدية",
+  "snow":" ثلج",
+  "mist":"ضباب "
+
 }
