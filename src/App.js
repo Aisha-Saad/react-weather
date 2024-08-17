@@ -21,7 +21,7 @@ const theme = createTheme({
 });
 function App() {
   const { t, i18n } = useTranslation();
-  const [local, setLocal] = useState("");
+  const [local, setLocal] = useState("ar");
   const [timeandDate, settimeandDate] = useState("");
   const [temp, setTemp] = useState({
     number: null,
@@ -31,23 +31,25 @@ function App() {
     icon:null,
   });
 
-
+ const direction= local  === "ar" ?"rtl" :"ltr"
   function handelChangeLanguage(){
   
     if(local==="en"){
       setLocal("ar")
       i18n.changeLanguage("ar")
+      moment.locale("ar");  
     }else{
       setLocal("en")
       i18n.changeLanguage("en")
+      moment.locale("en");  
     }
+    settimeandDate(moment().format('MMMM Do YYYY,   h:mm '))
 
   }
   
   useEffect(() => {
     i18n.changeLanguage("ar")
 
-    settimeandDate(moment().format('MMMM Do YYYY,   h:mm '))
     axios
       .get(
         "https://api.openweathermap.org/data/2.5/weather?lat=24.6&lon=46.7&appid=b5fe871dfe12d53f4a9ced570be2eb3b"
@@ -75,7 +77,7 @@ function App() {
         {/*=== {container}===== */}
         <Container
           maxWidth="sm"
-          dir="rtl"
+          dir={direction}
           style={
             {
               // display: "flex",
@@ -104,19 +106,24 @@ function App() {
                 width: "100%",
               }}
             >
-              <div>
+              
+              <div >
                 <div style={{ padding: "10px" }}>
                   <Typography variant="h1">{t("Riyad")}</Typography>
                   
                 </div>
-
+              
                 <div style={{ padding: "10px" }}>
                   <Typography variant="h5"> {timeandDate}</Typography>
                 </div>
+              
                 <hr />
+                <div   
+                ></div>
                 <div
                   style={{ display: "flex", justifyContent: "space-around" }}
                 >
+                  
                   <div>
                     {" "}
                     <Typography variant="h2" style={{ textAlign: "right" }}>
@@ -126,12 +133,13 @@ function App() {
                       <img src={temp.icon}/>
                     <div
                       style={{
-                        direction: "ltr",
+                        direction:{direction},
                         textAlign: "right",
                         display: "flex",
                         justifyContent: "space-between",
                       }}
                     >
+                    
                       <h5> {temp.min}: {t("min")} </h5>
                       <h5 style={{ padding: "0 9px " }}>|</h5>
                       <h5> {temp.max} : {t("max")}</h5>
